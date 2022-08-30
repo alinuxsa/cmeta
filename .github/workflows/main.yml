@@ -19,6 +19,13 @@ jobs:
         with:
           repository:  MetaCubeX/Clash.Meta
           fetch-depth: 0 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
       - name: debug
         run: |
           pwd && ls -al
