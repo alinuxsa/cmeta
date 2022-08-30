@@ -3,10 +3,19 @@ name: CI
 on:
   workflow_dispatch:
 
+env:
+  REGISTRY: docker.io
+
 jobs:    
-  hello:
+  build:
     runs-on: ubuntu-latest
     steps:
       - run: | 
           echo "Hello World!"
-      
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          repository:  MetaCubeX/Clash.Meta 
+      - name: debug
+        run: |
+          pwd && ls -al
