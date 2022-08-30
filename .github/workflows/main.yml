@@ -15,7 +15,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          repository:  MetaCubeX/Clash.Meta 
+          repository:  MetaCubeX/Clash.Meta
+          fetch-depth: 0 
       - name: debug
         run: |
           pwd && ls -al
+      - name: login registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
